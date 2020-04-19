@@ -1,0 +1,12 @@
+development:
+    AWS_ACCESS_KEY_ID: 'AKIA3LKVHFVJBHFAD4NF'
+    AWS_SECRET_ACCESS_KEY: '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'
+    S3_BUCKET: 'myproperties'
+# test:
+#     AWS_ACCESS_KEY_ID: 'AKIAJDXQBE4LAI3C72EQ'
+#     AWS_SECRET_ACCESS_KEY: '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'
+#     S3_BUCKET: 'propertyproject'
+# production:
+#     AWS_ACCESS_KEY_ID: 'AKIAJDXQBE4LAI3C72EQ'
+#     AWS_SECRET_ACCESS_KEY: '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'
+#     S3_BUCKET: 'propertyproject'
