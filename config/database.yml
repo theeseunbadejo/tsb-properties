@@ -3,21 +3,15 @@ development:
     encoding: unicode
     database: database_postgresql
     pool: 5
-    username: postgres
-    password: secret
 
 test:
-   adapter: postgresql
+    adapter: postgresql
     encoding: unicode
     database: database_postgresql_test
     pool: 5
-    username: postgres
-    password: secret
 
 production:
-   adapter: postgresql
+    adapter: postgresql
     encoding: unicode
     database: database_postgresql
     pool: 5
-    username: postgres
-    password: secret

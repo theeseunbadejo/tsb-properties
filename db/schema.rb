@@ -10,9 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_221247) do
+ActiveRecord::Schema.define(version: 2020_04_20_173542) do
 
-  create_table "accounts", id: :string, force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "accounts", force: :cascade do |t|
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
     t.string "email", default: "", null: false
@@ -51,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_221247) do
     t.string "direct_otp"
     t.datetime "direct_otp_sent_at"
     t.datetime "totp_timestamp"
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["encrypted_otp_secret_key"], name: "index_accounts_on_encrypted_otp_secret_key", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
@@ -65,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_221247) do
     t.index ["password_archivable_type", "password_archivable_id"], name: "index_password_archivable"
   end
 
-  create_table "posts", id: :string, force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "url"
     t.string "summary"
@@ -74,10 +79,11 @@ ActiveRecord::Schema.define(version: 2020_04_18_221247) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
   end
 
-  create_table "properties", id: :string, force: :cascade do |t|
-    t.string "account_id"
+  create_table "properties", force: :cascade do |t|
+    t.bigint "account_id"
     t.string "name"
     t.string "address"
     t.integer "price"
@@ -92,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_221247) do
     t.boolean "for_sale", default: true
     t.datetime "available_date"
     t.string "status", default: "available"
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
     t.index ["account_id"], name: "index_properties_on_account_id"
   end
 
@@ -100,5 +107,4 @@ ActiveRecord::Schema.define(version: 2020_04_18_221247) do
     t.string "name", null: false
   end
 
-  add_foreign_key "properties", "accounts"
 end

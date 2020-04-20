@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
   end
 
   def profile
-    @account = Account.find(params[:id])
+    @account = Account.find_by_uuid(params[:uuid])
     @properties = @account.properties
     @properties_sold = @account.properties.sold.count
     @properties_for_sale = @account.properties.for_sale.count

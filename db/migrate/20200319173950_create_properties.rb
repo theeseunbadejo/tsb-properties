@@ -1,10 +1,10 @@
 class CreateProperties < ActiveRecord::Migration[6.0]
   def change
-    create_table :properties, id: :string do |t|
-      t.references :account, foreign_key: true, type: :string, index: true
+    create_table :properties do |t|
+      t.references :account
       t.string :name
       t.string :address
-      t.string :price
+      t.integer :price
       t.string :integer
       t.integer :rooms
       t.integer :bathrooms

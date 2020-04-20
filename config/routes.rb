@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     sessions: 'accounts/sessions',
     passwords: 'accounts/passwords'
   }
-  resources :posts
-  resources :properties
+  resources :posts, param: :uuid
+  resources :properties, param: :uuid
 
   get "/blog" => "posts#latest", as: :blog
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/accounts" => 'admin#accounts', as: :accounts
 
   get "dashboard" => 'dashboard#index', as: :dashboard
-  get "profile/:id" => 'dashboard#profile', as: :profile
+  get "profile/:uuid" => 'dashboard#profile', as: :profile
   post "/agent/message" => "properties#email_agent", as: :email_agent
 
 
