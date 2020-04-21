@@ -4,11 +4,11 @@
     <div class="property border">
 
       <div class="property-thumb" style="background-image: url(<%= property_thumbnail_url(property) %>)">
-        <%= sanitize link_to "", property_path(property) %>
+        <%= sanitize link_to "", property_path(uuid: property.uuid) %>
       </div>
 
       <div class="property-summary p-3">
-        <h3 class="h5"><%= sanitize link_to property.name, property_path(property), scrubber: PropertyScrubber.new, class:"text-dark"%></h3>
+        <h3 class="h5"><%= sanitize link_to property.name, property_path(uuid: property.uuid), scrubber: PropertyScrubber.new, class:"text-dark"%></h3>
 
         <span class="mr-2"><i class="fas fa-bed text-muted ml-1"></i><%= property.rooms %></span>
         <span class="mr-2"><i class="fas fa-bath text-muted ml-1"></i><%= property.bathrooms %></span>

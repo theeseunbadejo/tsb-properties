@@ -30,12 +30,10 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     @property.account_id = current_account.id
-
-
-
     respond_to do |format|
       if @property.save
-        property_path(uuid: @property.uuid)
+        @property.reload
+        format.html { redirect_to property_path(uuid: @property.uuid), notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new }
@@ -49,7 +47,7 @@ class PropertiesController < ApplicationController
   def update
     respond_to do |format|
       if @property.update(property_params)
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
+        format.html { redirect_to property_path(uuid: @property.uuid), notice: 'Property was successfully updated.' }
         format.json { render :show, status: :ok, location: @property }
       else
         format.html { render :edit }

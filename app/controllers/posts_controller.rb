@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to post_path(uuid: @post.uuid), notice: 'Post was successfully created.' }
       else
         format.html { render :new }
       end
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to post_path(uuid: @post.uuid), notice: 'Post was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -66,7 +66,7 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:uuid])
+      @post = Post.find_by_uuid(params[:uuid])
     end
 
     def can_access?

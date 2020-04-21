@@ -16,7 +16,7 @@
       <div class="col">
         <h2><%= post.title %></h2>
         <p><%= sanitize post.summary%></p>
-        <%= link_to "Read More", post_path(post), class: "btn btn-success" %>
+        <%= link_to "Read More", post_path(uuid: post.uuid), class: "btn btn-success" %>
         <hr />
       </div>
     </div>
