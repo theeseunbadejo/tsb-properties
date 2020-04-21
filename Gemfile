@@ -71,3 +71,4 @@ gem 'easy_captcha'
 gem 'rmagick'
 gem 'recaptcha'
 gem 'two_factor_authentication'
+gem "aws-sdk-s3", require: false
