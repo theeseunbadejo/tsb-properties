@@ -35,7 +35,7 @@ class PropertiesController < ApplicationController
 
     respond_to do |format|
       if @property.save
-        property_path(uuid: #property.uuid)
+        property_path(uuid: @property.uuid)
         format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new }
